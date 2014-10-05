@@ -53,10 +53,10 @@ public class DateServer extends Thread {
 		final PrintWriter out = new PrintWriter(outputStream);
 		final String readLine = in.readLine();
 
-		
 		try {
-			System.out.println(parseDate(readLine));
+			out.println(parseDate(readLine));
 		} catch (ParseException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -70,6 +70,10 @@ public class DateServer extends Thread {
 		return dateFormatter.getDateDiff(dateFormatter.getCurrentDate(),
 				dateFormatter.formatDateStr(readLine), TimeUnit.DAYS);
 
+	}
+
+	public static void main(String[] args) throws IOException {
+		new DateServer(SERVER_PORT).start();
 	}
 
 }
